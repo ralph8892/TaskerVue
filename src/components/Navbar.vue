@@ -10,34 +10,31 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav" v-if="store.isLoggedIn">
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'tasks' }" class="nav-link">Tasks</router-link>
-                        <!-- <a href="#" @click.prevent="$router.push('/tasks')" class="nav-link">Tasks</a> -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">  
+                        <a href="#" class="nav-link">Tasks</a>
                     </li>
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'summary' }" class="nav-link">Summary</router-link>
+                    <li class="nav-item">  
+                        <a href="#" class="nav-link">Summary</a>
                     </li>
+                    
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                    <template v-if="!store.isLoggedIn">
-                        <li class="nav-item">
-                            <router-link :to="{ name: 'login' }" class="btn btn-outline-secondary ms-2">Login</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link :to="{ name: 'register' }" class="btn btn-danger ms-2">Register</router-link>
-                        </li>
-                    </template>
-                    <template v-else>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" :class="toggleClass" @click.prevent="toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ store.user.name }}
-                            </a>
-                            <ul class="dropdown-menu" :class="toggleClass">
-                                <li><a href="#" class="dropdown-item" @click.prevent="logout">Logout</a></li>
-                            </ul>
-                        </li>
-                    </template>
+                    
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Login</a>
+                            
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Register</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                            
+                        <a href="#" class="btn btn-outline-secondary ms-2">Logout</a>
+                            
+                    </li>
+                    
                 </ul>
             </div>
         </div>
