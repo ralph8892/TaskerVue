@@ -7,7 +7,7 @@
 
                     <div class="relative">
 
-                    <input type="text" class="form-control form-control-lg padding-right-lg"
+                    <input type="text" name="add-task" class="form-control form-control-lg padding-right-lg"
 
                         placeholder="+ Add new task. Press enter to save." />
 
@@ -39,6 +39,6 @@
 
     onMounted(async () => {
         const { data } = await allTasks()
-        tasks.data = data.data
+        tasks.value = data.data
     })
 </script>

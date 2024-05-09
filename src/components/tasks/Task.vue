@@ -1,50 +1,49 @@
 <template>
     <li class="list-group-item py-3">
 
-        <div class="d-flex justify-content-start align-items-center">
+    <div class="d-flex justify-content-start align-items-center">
 
-            <input class="form-check-input mt-0 completed" type="checkbox" />
+        <input class="form-check-input mt-0 completed" type="checkbox" />
 
-            <div class="ms-2 flex-grow-1" title="Double click the text to edit or remove">
+        <div class="ms-2 flex-grow-1" title="Double click the text to edit or remove">
 
-                <!-- <div class="relative">
+            <!-- <div class="relative">
 
-                    <input class="editable-task" type="text" />
+                <input class="editable-task" type="text" />
 
-                </div> -->
+            </div> -->
 
-                <span>{{ task.name }}</span>
-
-            </div>
-
-            <!-- <div class="task-date">24 Feb 12:00</div> -->
+            <span>{{ task.name }}</span>
 
         </div>
 
-        <div class="task-actions">
+        <!-- <div class="task-date">24 Feb 12:00</div> -->
 
-            <button class="btn btn-sm btn-circle btn-outline-secondary me-1">
+    </div>
 
-                <IconPencil />
+    <div class="task-actions">
 
-            </button>
+        <button class="btn btn-sm btn-circle btn-outline-secondary me-1">
 
-            <button class="btn btn-sm btn-circle btn-outline-danger">
+            <IconPencil />
 
-                <IconTrash />
+        </button>
 
-            </button>
+        <button class="btn btn-sm btn-circle btn-outline-danger">
 
-        </div>
+            <IconTrash />
+
+        </button>
+
+    </div>
 
     </li>
 </template>
 
 <script setup>
-    import IconPencil from "../icons/IconPencil.vue"
-    import IconTrash from "../icons/IconTrash.vue"
-    
-    defineProps({
-        task: Object
-    })
+import IconPencil from '../icons/IconPencil.vue';
+import IconTrash from '../icons/IconTrash.vue';
+defineProps({
+    task:Object
+})
 </script>
