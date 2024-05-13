@@ -21,7 +21,7 @@
 
     </div>
 
-    <TaskActions @edit="$event => isEdit = true" v-show="!isEdit" />
+    <TaskActions @edit="$event => isEdit = true" v-show="!isEdit" @remove="removeTask" />
 
     </li>
 </template>
@@ -34,7 +34,7 @@
         task:Object
     })
 
-    const emit = defineEmits(['updated', 'completed'])
+    const emit = defineEmits(['updated', 'completed', 'removed'])
 
     const isEdit = ref(false)
     const editingTask = ref(props.task.name)
@@ -55,8 +55,15 @@
         emit('completed', updatedTask)
     }
 
+    const removeTask = () => {
+        if (confirm("Remove Task?")) {
+            emit('removed', props.task)
+        }
+    }
+
     const undo = () => {
         isEdit.value = false
         editingTask.value = props.task.name
     }
+
 </script>

@@ -9,7 +9,7 @@
 
                     <!-- List of incomplete tasks -->
 
-                    <Tasks :tasks="uncompletedTasks" @updated="handleUpdatedTask" @completed="handleCompletedTask" />
+                    <Tasks :tasks="uncompletedTasks" @updated="handleUpdatedTask" @completed="handleCompletedTask" @removed="handleRemovedTask" />
 
                     <!-- Show toggle button -->
                     <div class="text-center my-3" v-show="showToggleCompletedBtn">
@@ -19,7 +19,7 @@
                         </button>
                     </div>
                     <!-- List of completed tasks -->
-                    <Tasks :tasks="completedTasks" :show="completedTasksIsVisible && showCompletedTasks" @updated="handleUpdatedTask" @completed="handleCompletedTask" />
+                    <Tasks :tasks="completedTasks" :show="completedTasksIsVisible && showCompletedTasks" @updated="handleUpdatedTask" @completed="handleCompletedTask" @removed="handleRemovedTask" />
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
 
 <script setup>
     import { computed, onMounted, ref } from "vue";
-    import { allTasks, createTask, updateTask, completeTask } from "../http/task-api";
+    import { allTasks, createTask, updateTask, completeTask, removeTask } from "../http/task-api";
     import Tasks from "../components/tasks/Tasks.vue";
     import NewTask from "../components/tasks/NewTask.vue";
 
@@ -67,5 +67,11 @@
 
         const currentTask = tasks.value.find(item => item.id === task.id)
         currentTask.is_completed = updatedTask.data.is_completed
+    }
+
+    const handleRemovedTask = async (task) => {
+        await removeTask(task.id)
+        const index = tasks.value.findIndex(item => item.id === task.id)
+        tasks.value.splice(index, 1)
     }
 </script>
